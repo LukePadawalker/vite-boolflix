@@ -1,6 +1,27 @@
 <script>
+export default {
+
+}
 </script>
 
-<template></template>
+<template>
+    <div class="header d-flex justify-content-between">
+        <div class="logo">
+            <h1>BOOLFLIX</h1>
+        </div>
+        <div class="search">
+            <input type="text">
+            <button></button>
+        </div>
+    </div>
+</template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: gray;
+
+
+}
+</style>
