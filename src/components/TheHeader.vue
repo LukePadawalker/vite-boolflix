@@ -1,9 +1,4 @@
 <script>
-import store from '/src/data/store'
-
-export default {
-
-}
 </script>
 
 <template></template>
