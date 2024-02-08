@@ -1,8 +1,9 @@
 <script>
-import store from './data/store.js'
+import { store } from '/src/data/store.js'
 import MovieCard from "./MovieCard.vue"
 export default {
-    components: { MovieCard }
+    components: { MovieCard },
+    data: () => ({ store })
 
 }
 </script>
@@ -11,11 +12,11 @@ export default {
     <div class="container">
         <h1>Movies!</h1>
         <MovieCard v-for="movie in store.movies" :title="movie.title" :original_title="movie.original_title"
-            :language="movie.language" :score="movie.score" />
+            :language="movie.original_language" :score="movie.vote_average" />
         <h1>Tv Series!</h1>
 
-        <MovieCard v-for="movie in store.tvSeries" :title="movie.name" :original_name="movie.original_title"
-            :language="movie.language" :score="movie.score" />
+        <MovieCard v-for="tvserial in store.tvSeries" :title="tvserial.name" :original_title="tvserial.original_name"
+            :language="tvserial.original_language" :score="tvserial.vote_average" />
     </div>
 </template>
 
