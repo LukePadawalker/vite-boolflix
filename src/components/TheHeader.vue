@@ -3,7 +3,7 @@ export default {
     data: () => ({
         inputSearch: '',
     }),
-    emits: ['name-search']
+    emits: ['name-search', 'input-change']
 
 }
 </script>
@@ -15,7 +15,7 @@ export default {
         </div>
         <div class="search">
             <form action="" @submit.prevent="$emit('name-search', inputSearch)">
-                <input type="text" v-model.trim="inputSearch">
+                <input type="text" v-model.trim="inputSearch" @keyup="$emit('input-change', inputSearch)">
                 <button>Cerca</button>
             </form>
         </div>

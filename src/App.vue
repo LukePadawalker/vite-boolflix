@@ -5,32 +5,43 @@ import { apiUri } from '/src/data/index.js'
 import TheHeader from './components/TheHeader.vue'
 
 export default {
+    data: () => ({ store }),
+    name: 'App',
     components: { TheHeader },
     methods: {
-        fetchMovies(endpoint = apiUri) {
-            axios.get(endpoint).then(res => {
-                store.movies = res.data.results;
-                console.log(store.movies)
-            })
+        fillTitleFilter(inputSearch) {
+            store.filter = inputSearch
+            console.log(inputSearch)
+            console.log(store.filter)
         },
-        filterContent(inputSearch) {
-            const filteredMovies = store.movies.filter(movie => movie.title.toLowerCase().includes(inputSearch))
-            console.log(filteredMovies, inputSearch);
-            return filteredMovies;
+
+        filteredContent() {
+            if (!store.filter) {
+                store.movies = []
+                return
+            }
+            const { baseUri } = apiUri;
+            const params = {
+                query: store.filter,
+                apiKey: '583b41002fc6c0f654b932ef777dc475',
+                language: 'it-IT'
+            }
+            axios.get(`${baseUri}/search/movie`, { params }).then(res => {
+                store.movies = res.data.results
+                console.log(store.movies)
+            }).catch(err => {
+                console.log(err)
+            })
+
         }
     },
-    computed: {
-    },
-
-    created() {
-        this.fetchMovies();
-    }
 }
+
 </script>
 
 <template>
     <div>
-        <TheHeader @name-search="filterContent" />
+        <TheHeader @name-search="filteredContent" @input-change="fillTitleFilter" />
     </div>
 </template>
 
