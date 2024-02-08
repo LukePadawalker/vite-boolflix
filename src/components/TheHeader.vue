@@ -1,17 +1,23 @@
 <script>
 export default {
+    data: () => ({
+        inputSearch: '',
+    }),
+    emits: ['name-search']
 
 }
 </script>
 
 <template>
-    <div class="header d-flex justify-content-between">
+    <div class="header">
         <div class="logo">
             <h1>BOOLFLIX</h1>
         </div>
         <div class="search">
-            <input type="text">
-            <button></button>
+            <form action="" @submit.prevent="$emit('name-search', inputSearch)">
+                <input type="text" v-model.trim="inputSearch">
+                <button>Cerca</button>
+            </form>
         </div>
     </div>
 </template>
@@ -19,8 +25,12 @@ export default {
 <style lang="scss" scoped>
 .header {
     width: 100%;
-    height: 100px;
+    height: 70px;
     background-color: gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 
 
 }

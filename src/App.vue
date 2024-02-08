@@ -9,21 +9,28 @@ export default {
     methods: {
         fetchMovies(endpoint = apiUri) {
             axios.get(endpoint).then(res => {
-                store.movies = res.data;
+                store.movies = res.data.results;
                 console.log(store.movies)
             })
+        },
+        filterContent(inputSearch) {
+            const filteredMovies = store.movies.filter(movie => movie.title.toLowerCase().includes(inputSearch))
+            console.log(filteredMovies, inputSearch);
+            return filteredMovies;
         }
     },
+    computed: {
+    },
+
     created() {
         this.fetchMovies();
     }
-
 }
 </script>
 
 <template>
     <div>
-        <TheHeader />
+        <TheHeader @name-search="filterContent" />
     </div>
 </template>
 
