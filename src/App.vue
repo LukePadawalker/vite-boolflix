@@ -20,14 +20,13 @@ export default {
                 store.movies = []
                 return
             }
-            const { baseUri } = apiUri;
             const params = {
                 query: store.filter,
-                apiKey: '583b41002fc6c0f654b932ef777dc475',
+                api_key: '9c81a4be156c3386fb3485d2a9396428',
                 language: 'it-IT'
             }
-            axios.get(`${baseUri}/search/movie`, { params }).then(res => {
-                store.movies = res.data.results
+            axios.get(`${apiUri}/search/movie`, { params }).then(res => {
+                store.movies = res.data.results;
                 console.log(store.movies)
             }).catch(err => {
                 console.log(err)
