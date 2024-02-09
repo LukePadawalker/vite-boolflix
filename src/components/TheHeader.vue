@@ -18,8 +18,6 @@ export default {
             <a href="">Originali</a>
             <a href="">Aggiunti di recente</a>
             <a href="">La mia lista</a>
-
-
         </div>
         <div class="search">
             <form action="" @submit.prevent="$emit('name-search', inputSearch)">

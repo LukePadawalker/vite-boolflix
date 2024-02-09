@@ -10,13 +10,12 @@ export default {
 
 <template>
     <div class="container">
-        <h2>ORIGINALI NETFLIX</h2>
+        <h2>ORIGINALI BOOLFLIX</h2>
         <div class="movie-container">
             <MovieCard v-for="movie in store.movies" :title="movie.title" :original_title="movie.original_title"
                 :language="movie.original_language" :score="movie.vote_average" :poster_path="movie.poster_path" />
         </div>
         <h2>Serie Tv</h2>
-
         <div class="movie-container">
             <MovieCard v-for="tvserial in store.tvSeries" :title="tvserial.name" :original_title="tvserial.original_name"
                 :language="tvserial.original_language" :score="tvserial.vote_average" :poster_path="tvserial.poster_path" />
@@ -25,7 +24,7 @@ export default {
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
     color: white;
     height: calc(100vh - 70px);
@@ -33,9 +32,16 @@ export default {
     overflow-x: scroll;
     background-color: rgb(40, 39, 39);
 
-    .movie-container {
-        display: flex;
+    h2 {
+        padding-left: 30px;
+    }
 
+    .movie-container {
+        padding: 30px;
+        display: flex;
+        overflow-y: scroll;
+        gap: 4px;
+        width: 100%;
     }
 
 }
