@@ -11,6 +11,7 @@ export default {
         language: String,
         score: Number,
         poster_path: String || null,
+        overview: String
 
 
     },
@@ -39,6 +40,7 @@ export default {
             <p class="title">{{ title }}</p>
             <p class="original_title">{{ original_title }}</p>
             <img :src="flag" :alt="language" class="flag-img">
+            <p class="overview">Descrizione: {{ overview }}</p>
             <li>
                 <i v-for="n in 5" :key="n" class="fa-star" :class="n <= vote ? 'fa-solid' : 'fa-regular'"></i>
             </li>
@@ -60,7 +62,9 @@ img {
 .card {
     position: relative;
     flex-shrink: 0;
+    flex-grow: 0;
     width: 18%;
+
     background-color: black;
     border-radius: 5px;
     transition: all 0.3s ease;
@@ -90,6 +94,11 @@ img {
         gap: 10px;
         font-weight: 200;
         transition: all 0.3s ease;
+
+        .overview {
+            max-height: 100%;
+            overflow-x: auto;
+        }
 
     }
 
